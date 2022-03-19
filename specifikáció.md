@@ -8,7 +8,7 @@ Lesz egy árverés objektum, amihez tartozik pontosan egy tárgy és tetszőlege
 
 ### Árverés
 
-Van tárggya, vásárlói. Hozzá lehet adni szervezőt, tárgyat, vásárlókat. El lehet indítani. Lehet indexelni a vásárlói között.
+Van tárggya, vásárlói. Hozzá lehet adni szervezőt, tárgyat, vásárlókat. El lehet indítani. A vásárlók láncolt listában vannak tárolva.
 
 ### Vásárló
 
