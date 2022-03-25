@@ -1,21 +1,17 @@
 # Specifikáció
 
-## A program működése
+## Feladat
 
-Lesz egy árverés objektum, amihez tartozik pontosan egy tárgy és tetszőleges számú vásárló. Ezen az objektumon keresztül lehet majd elindítani az árverést. Ha elindul az árverés a szervező kikiált egy kezdő árat. Ezután végigmegyek a vásárlókon és véletlenszerűen licitálnak, illetve nem licitálnak. Ha egyik vásárló sem licitál már, kiírom a nyertes vásárló nevét.
+Egy digitális árverés szimulálása. Egy tárgyat lehet elárverezni vásárló-botok segitségével. Minden vásárló véletlenszerűen licitál az adott tárgyra. A szimuláció addig fut, amig van legalább 2 licitáló, ezután aki az utolsó licitet tette, megnyeri a tárgyat az adott áron. Nem lehet túl kevés vásárlóval elinditani az árverést.
 
-## Objektumok
+## Árverés
 
-### Árverés
+Lehessen egy árveréshez tárgyat, vásárlókat és szervezőt hozzáadni. Ezeket bármikor lehet változtatni. Az utóbbit csak név alapján. Ha bármelyik hiányzik nem lehet az árverést elinditani. Hozzá lehet egysével, de teljes listaként is adni a vásárlókat. Értékek nélkül is létre lehet hozni, de ilyenkor utólag kell mindent megadni, nincsenek alapértékei.
 
-Van tárggya, vásárlói. Hozzá lehet adni szervezőt, tárgyat, vásárlókat. El lehet indítani. A vásárlók láncolt listában vannak tárolva.
+## Vásárló
 
-### Vásárló
+Van neve és licit értéke, amilyen eséllyel tud licitálni egy tárgyra. Név nélkül nem lehet létrehozni, de van alap licit értéke.
 
-Van neve, értéke, amilyen eséllyel licitál egy tárgyra.
+## Tárgy
 
-### Tárgy
-
-Van neve, kezdőértéke.
-
-Minden funkcióját az objektumoknak operator overloadinggal akarom megoldani. Pl: Vásárló hozzáadása az árveréshez az operator+-szal történik. Tesztprogrammal fogom ellenőrizni a helyes működést.
+Van neve és kezdőértéke, amiről indul a licitálása. Név nélkül nem lehet létrehozni, de van alap licit értéke.

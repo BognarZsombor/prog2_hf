@@ -6,7 +6,7 @@
 
 #### Tulajdonságok
 
-Tárgy, VásárlóLista
+Szervező, Tárgy, VásárlóLista
 
 #### Public Funkciók
 
@@ -18,13 +18,15 @@ vásárló indexelés [] : Ha egy Árverés objektumot indexelünk a VásárlóL
 
 tárgy hozzáadás : Getter és Setter.
 
+szervező hozzáadás : Getter és Setter.
+
 kiir : Elinditja az árverést.
 
 ### Vásárló
 
 #### Tulajdonságok
 
-Id: Az adott árverésben lévő száma, mivel több embernek is ugyanaz lehet a neve.
+Id: Az adott árverésben lévők száma, mivel több embernek is ugyanaz lehet a neve.
 Név: Fix hosszú char tömb.
 LicitÉrték: A licitáláskor vett random számban játszik szerepet.
 

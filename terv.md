@@ -6,12 +6,11 @@
 
 ```c++
 class Arveres {
+    string szervezo;
     Targy targy;
     Vasarlo *lista_elem;
     
 public:
-    Arveres(Vasarlo v = NULL, Targy t = NULL);
-    
     Arveres(Vasarlo *v, Targy t = NULL);
     
     void operator+();
@@ -26,6 +25,10 @@ public:
     
     const Targy& targy() const;
     
+    string& szervezo();
+    
+    const string& szervezo() const;
+    
     ostream& kiir(ostream& os);
 };
 ```
@@ -35,13 +38,13 @@ public:
 ```c++
 class Vasarlo {
     int id;
-    std:basic_string<char> nev;
+    string nev;
     int licit_ertek;
     
 public:
-    std:basic_string<char>& nev();
+    string& nev();
     
-    const std:basic_string<char>& nev() const;
+    const string& nev() const;
     
     int& licit_ertek();
     
@@ -55,13 +58,13 @@ public:
 
 ```c++
 class Targy {
-    std:basic_string<char> nev;
+    string nev;
     int ar;
     
 public:
-    std:basic_string<char>& nev();
+    string& nev();
     
-    const std:basic_string<char>& nev() const;
+    const string& nev() const;
     
     int& ar();
     
