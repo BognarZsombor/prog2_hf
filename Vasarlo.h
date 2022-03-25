@@ -8,12 +8,12 @@
 #include <iostream>
 
 class Vasarlo {
-    int id{};
+    int id;
     std::string nev;
     int licit_ertek;
 
 public:
-    Vasarlo(std::string& n, int l = 0) : nev(n), licit_ertek(l) {};
+    Vasarlo(std::string & n, int l = 0) : nev(n), licit_ertek(l) {};
 
     std::string & get_nev() { return nev; }
 

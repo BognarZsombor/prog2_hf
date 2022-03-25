@@ -8,14 +8,15 @@
 #include <iostream>
 #include "Targy.h"
 #include "Vasarlo.h"
+#include "VasarloLista.h"
 
 class Arveres {
     std::string szervezo;
     Targy targy;
-    Vasarlo *lista_elem;
+    VasarloLista vasarlok;
 
 public:
-    Arveres(std::string& sz, Targy& t, Vasarlo* v = nullptr) : szervezo(sz), targy(t), lista_elem(v) {};
+    Arveres(std::string & sz, Targy & t, VasarloLista v = VasarloLista()) : szervezo(sz), targy(t), vasarlok(v) {};
 
     std::string & get_szervezo() { return szervezo; }
 
@@ -25,27 +26,27 @@ public:
 
     const Targy & get_targy() const { return targy; }
 
-    Vasarlo & operator[](int index);
-
-    const Vasarlo & operator[](int index) const;
-
     std::ostream & kiir(std::ostream & os);
 
-    Arveres operator+(Vasarlo& rhs_v);
+    Vasarlo & operator[](std::string nev);
 
-    Arveres operator+(Arveres& rhs_a);
+    const Vasarlo & operator[](std::string nev) const;
 
-    Arveres operator-(Vasarlo& rhs_v);
+    Arveres operator+(Vasarlo & rhs_v);
 
-    Arveres operator-(Arveres& rhs_a);
+    Arveres operator+(Arveres & rhs_a);
 
-    Arveres& operator+=(Vasarlo& rhs_v);
+    Arveres operator-(Vasarlo & rhs_v);
 
-    Arveres& operator+=(Arveres& rhs_a);
+    Arveres operator-(Arveres & rhs_a);
 
-    Arveres& operator-=(Vasarlo& rhs_v);
+    Arveres& operator+=(Vasarlo & rhs_v);
 
-    Arveres& operator-=(Arveres& rhs_a);
+    Arveres& operator+=(Arveres & rhs_a);
+
+    Arveres& operator-=(Vasarlo & rhs_v);
+
+    Arveres& operator-=(Arveres & rhs_a);
 };
 
 
