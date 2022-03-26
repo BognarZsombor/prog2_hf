@@ -28,9 +28,9 @@ public:
 
     std::ostream & kiir(std::ostream & os);
 
-    Vasarlo & operator[](std::string nev);
+    Vasarlo & operator[](const std::string& nev);
 
-    const Vasarlo & operator[](std::string nev) const;
+    const Vasarlo & operator[](const std::string& nev) const;
 
     Arveres operator+(Vasarlo & rhs_v);
 

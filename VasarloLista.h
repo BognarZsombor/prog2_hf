@@ -18,8 +18,18 @@ class VasarloLista {
 
 public:
 
+    VasarloLista() { eleje = NULL; }
+
+    VasarloLista(Vasarlo const & v) {
+        eleje = new ListaElem;
+        eleje->adat = v;
+        eleje->kov = NULL;
+    }
+
+    VasarloLista(VasarloLista const & rhs_l);
+
     class NameNotFound : public std::exception {
-        const char * what() const throw() { return "Ilyen nevű ember nincs ebben az árverésben."; }
+        const char * what() const throw() { return "Ilyen nevű ember nincs a listában."; }
     };
 
     class iterator {
@@ -85,6 +95,8 @@ public:
     const_iterator begin() const { return const_iterator(eleje); }
 
     const_iterator end() const { return const_iterator(NULL); }
+
+    void operator+(Vasarlo const & v);
 };
 
 

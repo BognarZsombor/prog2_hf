@@ -13,6 +13,8 @@ class Vasarlo {
     int licit_ertek;
 
 public:
+    Vasarlo() : nev(""), licit_ertek(0) {};
+
     Vasarlo(std::string & n, int l = 0) : nev(n), licit_ertek(l) {};
 
     std::string & get_nev() { return nev; }
