@@ -10,8 +10,10 @@ Lehessen egy árveréshez tárgyat, vásárlókat és szervezőt hozzáadni. Eze
 
 ## Vásárló
 
-Van neve és licit értéke, amilyen eséllyel tud licitálni egy tárgyra. Név nélkül nem lehet létrehozni, de van alap licit értéke.
+Van neve és licit értéke, amilyen eséllyel tud licitálni egy tárgyra. Létre lehet hozni név nélkül is, de ne lehessen elindítani, amíg nincs név megadva.
 
 ## Tárgy
 
 Van neve és kezdőértéke, amiről indul a licitálása. Név nélkül nem lehet létrehozni, de van alap licit értéke.
+
+Az alap operatorokkal lehessen a programot kezelni.
