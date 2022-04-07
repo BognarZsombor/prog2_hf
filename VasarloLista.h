@@ -18,85 +18,27 @@ class VasarloLista {
 
 public:
 
-    VasarloLista() { eleje = NULL; }
+    class ElementNotFound : public std::exception {
+        const char * what() const throw() override { return "Ilyen nevű ember nincs a listában."; }
+    };
 
-    VasarloLista(Vasarlo const & v) {
-        eleje = new ListaElem;
-        eleje->adat = v;
-        eleje->kov = NULL;
-    }
+    class NameAlreadyExists : public std::exception {
+        const char * what() const throw() override { return "Már van a listában ilyen nevű ember"; }
+    };
+
+    VasarloLista() { eleje = NULL; }
 
     VasarloLista(VasarloLista const & rhs_l);
 
-    class NameNotFound : public std::exception {
-        const char * what() const throw() { return "Ilyen nevű ember nincs a listában."; }
-    };
+    VasarloLista& operator=(const VasarloLista & rhs);
 
-    class iterator {
+    ListaElem * hozzaad(const Vasarlo & vasarlo);
 
-        ListaElem * elem;
+    ListaElem * hozzaad(const char * vasarlo_nev);
 
-    public:
-        iterator(ListaElem * elem = NULL) : elem(elem) {}
+    ListaElem * torol(const char * vasarlo_nev);
 
-        iterator& operator++() {
-            if (elem != NULL)
-                elem = elem->kov;
-            return *this;
-        }
-
-        iterator operator++(int) {
-            iterator masolat = *this;
-            ++(*this);
-            return masolat;
-        }
-
-        Vasarlo & operator*() const { return elem->adat; }
-
-        Vasarlo * operator->() const { return &(elem->adat); }
-
-        bool operator==(iterator rhs) const { return elem == rhs.elem; }
-
-        bool operator!=(iterator rhs) const { return elem != rhs.elem; }
-    };
-
-    class const_iterator {
-
-        ListaElem * elem;
-
-    public:
-        const_iterator(ListaElem * elem = NULL) : elem(elem) {}
-
-        const_iterator& operator++() {
-            if (elem != NULL)
-                elem = elem->kov;
-            return *this;
-        }
-
-        const_iterator operator++(int) {
-            const_iterator masolat = *this;
-            ++(*this);
-            return masolat;
-        }
-
-        Vasarlo const & operator*() const { return elem->adat; }
-
-        Vasarlo const * operator->() const { return &(elem->adat); }
-
-        bool operator==(const_iterator rhs) const { return elem == rhs.elem; }
-
-        bool operator!=(const_iterator rhs) const { return elem != rhs.elem; }
-    };
-
-    iterator begin() { return iterator(eleje); }
-
-    iterator end() { return iterator(NULL); }
-
-    const_iterator begin() const { return const_iterator(eleje); }
-
-    const_iterator end() const { return const_iterator(NULL); }
-
-    void operator+(Vasarlo const & v);
+    ~VasarloLista();
 };
 
 

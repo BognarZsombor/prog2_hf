@@ -8,14 +8,13 @@
 #include <iostream>
 
 class Vasarlo {
-    int id;
     std::string nev;
     int licit_ertek;
 
 public:
-    Vasarlo() : nev(""), licit_ertek(0) {};
+    Vasarlo() : licit_ertek(0) {};
 
-    Vasarlo(std::string & n, int l = 0) : nev(n), licit_ertek(l) {};
+    explicit Vasarlo(const char * n, int l = 0) : nev(n), licit_ertek(l) {};
 
     std::string & get_nev() { return nev; }
 
@@ -24,6 +23,14 @@ public:
     int & get_licit_ertek() { return licit_ertek; }
 
     const int & get_licit_ertek() const { return licit_ertek; }
+
+    bool operator==(const Vasarlo & rhs) { return nev == rhs.nev; }
+
+    bool operator==(const char * rhs) { return nev == rhs; }
+
+    bool operator!=(const Vasarlo & rhs) { return nev != rhs.nev; }
+
+    bool operator!=(const char * rhs) { return nev != rhs; }
 
     std::ostream & kiir(std::ostream & os);
 };
