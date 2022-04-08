@@ -16,7 +16,7 @@ class Arveres {
     VasarloLista vasarlok;
 
 public:
-    Arveres(std::string & sz, Targy & t, VasarloLista v = VasarloLista()) : szervezo(sz), targy(t), vasarlok(v) {};
+    Arveres(const char * _szervezo, Targy & _targy, const VasarloLista & _vasarlok) : szervezo(_szervezo), targy(_targy), vasarlok(_vasarlok.clone()) {};
 
     std::string & get_szervezo() { return szervezo; }
 
@@ -30,10 +30,6 @@ public:
 };
 
 /// GLobal függvények
-
-std::ostream & operator<<(std::ostream & os, const Arveres & arveres) {
-    os << arveres.kiir();
-}
 
 template<class T>
 std::ostream & operator<<(std::ostream & os, const T & _t);

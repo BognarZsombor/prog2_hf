@@ -16,11 +16,11 @@ class VasarloLista {
 
     ListaElem * eleje;
 
-    VasarloLista(VasarloLista const & rhs_l);
-
-    VasarloLista& operator=(const VasarloLista & rhs);
-
 public:
+
+    VasarloLista(VasarloLista const & rhs_l) = delete;
+
+    VasarloLista& operator=(const VasarloLista & rhs) = delete;
 
     class ElementNotFound : public std::exception {
         const char * what() const throw() override { return "Ilyen nevű ember nincs a listában."; }
@@ -38,7 +38,7 @@ public:
 
     ListaElem * torol(const char * vasarlo_nev);
 
-    VasarloLista clone() const;
+    ListaElem * clone() const;
 
     ~VasarloLista();
 };

@@ -4,15 +4,14 @@
 
 #include "VasarloLista.h"
 
-
-VasarloLista VasarloLista::clone() const {
+VasarloLista::ListaElem * VasarloLista::clone() const {
     ListaElem * uj_lista = eleje;
     ListaElem * iter = eleje;
     while (iter != NULL) {
         uj_lista = hozzaad(iter->adat);
         iter = iter->kov;
     }
-    return VasarloLista(uj_lista);
+    return uj_lista;
 }
 
 VasarloLista::ListaElem * VasarloLista::hozzaad(const Vasarlo & vasarlo) const {
@@ -81,14 +80,3 @@ VasarloLista::~VasarloLista() {
         iter = kov;
     }
 }
-
-
-
-
-
-
-
-
-
-
-

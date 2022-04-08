@@ -6,11 +6,11 @@
 #include "Arveres.h"
 
 std::ostream & Arveres::kiir(std::ostream &os) const {
+
     return os;
 }
 
 template<class T>
 std::ostream & operator<<(std::ostream & os, const T & _t) {
-    os << _t.kiir();
-    return os;
+    return _t.kiir(os);
 }
