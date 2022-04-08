@@ -6,7 +6,7 @@ Egy digitális árverés szimulálása. Egy tárgyat lehet elárverezni vásárl
 
 ## Árverés
 
-Lehessen egy árveréshez tárgyat, vásárlókat és szervezőt hozzáadni. Ezeket bármikor lehet változtatni. Az utóbbit csak név alapján. Ha bármelyik hiányzik nem lehet az árverést elinditani. Hozzá lehet egysével, de teljes listaként is adni a vásárlókat. Értékek nélkül is létre lehet hozni, de ilyenkor utólag kell mindent megadni, nincsenek alapértékei. Ki is lehet törölni vásárlókat az árverésből.
+Lehessen egy árveréshez tárgyat, vásárlókat és szervezőt hozzáadni. Ezeket bármikor lehet változtatni. Az utóbbit csak név alapján. Ha bármelyik hiányzik nem lehet az árverést elinditani. Hozzá lehet egysével, de teljes listaként is adni a vásárlókat. Ne lehessen több vásárlót azonos névvel hozzáadni. Értékek nélkül is létre lehet hozni, de ilyenkor utólag kell mindent megadni, nincsenek alapértékei. Ki is lehet törölni vásárlókat az árverésből.
 
 ## Vásárló
 

@@ -26,28 +26,17 @@ public:
 
     const Targy & get_targy() const { return targy; }
 
-    std::ostream & kiir(std::ostream & os);
-
-    Vasarlo & operator[](const std::string& nev);
-
-    const Vasarlo & operator[](const std::string& nev) const;
-
-    Arveres operator+(Vasarlo & rhs_v);
-
-    Arveres operator+(Arveres & rhs_a);
-
-    Arveres operator-(Vasarlo & rhs_v);
-
-    Arveres operator-(Arveres & rhs_a);
-
-    Arveres& operator+=(Vasarlo & rhs_v);
-
-    Arveres& operator+=(Arveres & rhs_a);
-
-    Arveres& operator-=(Vasarlo & rhs_v);
-
-    Arveres& operator-=(Arveres & rhs_a);
+    std::ostream & kiir(std::ostream & os) const;
 };
+
+/// GLobal függvények
+
+std::ostream & operator<<(std::ostream & os, const Arveres & arveres) {
+    os << arveres.kiir();
+}
+
+template<class T>
+std::ostream & operator<<(std::ostream & os, const T & _t);
 
 
 #endif //PROG2_HF_ARVERES_H
