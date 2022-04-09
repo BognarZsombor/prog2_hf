@@ -14,9 +14,14 @@ class Arveres {
     std::string szervezo;
     Targy targy;
     VasarloLista vasarlok;
+    int akt_licit;
 
 public:
-    Arveres(const char * _szervezo, Targy & _targy, const VasarloLista & _vasarlok) : szervezo(_szervezo), targy(_targy), vasarlok(_vasarlok.clone()) {};
+    Arveres(const Arveres &) = delete;
+
+    Arveres& operator=(const Arveres & rhs) = delete;
+
+    Arveres(const char * _szervezo, Targy & _targy, const VasarloLista & _vasarlok) : szervezo(_szervezo), targy(_targy), vasarlok(_vasarlok.clone()), akt_licit(0) {};
 
     std::string & get_szervezo() { return szervezo; }
 
@@ -26,13 +31,15 @@ public:
 
     const Targy & get_targy() const { return targy; }
 
-    std::ostream & kiir(std::ostream & os) const;
+    int & get_akt_licit() { return akt_licit; }
+
+    const int & get_akt_licit() const { return akt_licit; }
+
+    int uj_licit();
 };
 
 /// GLobal függvények
 
-template<class T>
-std::ostream & operator<<(std::ostream & os, const T & _t);
-
+std::ostream & operator<<(std::ostream & os, Arveres rhs);
 
 #endif //PROG2_HF_ARVERES_H

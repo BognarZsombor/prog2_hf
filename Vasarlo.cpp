@@ -5,7 +5,7 @@
 #include <iostream>
 #include "Vasarlo.h"
 
-std::ostream & Vasarlo::kiir(std::ostream &os) {
-    os << nev << "(" << licit_ertek << ")";
+std::ostream & operator<<(std::ostream & os, const Vasarlo & rhs) {
+    os << rhs.get_nev() << "(" << rhs.get_licit_ertek() << ")";
     return os;
 }

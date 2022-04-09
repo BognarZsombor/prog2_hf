@@ -3,14 +3,24 @@
 //
 
 #include <iostream>
+#include <stdlib.h>
+#include <time.h>
 #include "Arveres.h"
 
-std::ostream & Arveres::kiir(std::ostream &os) const {
-
-    return os;
+int Arveres::uj_licit() {
+    srand(time(NULL));
+    int temp_licit = vasarlok.licit(rand());
+    while (akt_licit < temp_licit) {
+        akt_licit = temp_licit;
+        temp_licit = vasarlok.licit(rand());
+    }
 }
 
-template<class T>
-std::ostream & operator<<(std::ostream & os, const T & _t) {
-    return _t.kiir(os);
+std::ostream & operator<<(std::ostream & os, Arveres & rhs) {
+    int temp_licit = rhs.uj_licit();
+    while (temp_licit > rhs.get_akt_licit()) {
+        rhs.get_akt_licit() = temp_licit;
+        temp_licit = rhs.uj_licit();
+    }
+    return os;
 }

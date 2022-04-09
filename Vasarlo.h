@@ -31,9 +31,10 @@ public:
     bool operator!=(const Vasarlo & rhs) { return nev != rhs.nev; }
 
     bool operator!=(const char * rhs) { return nev != rhs; }
-
-    std::ostream & kiir(std::ostream & os);
 };
 
+/// GLobal függvények
+
+std::ostream & operator<<(std::ostream & os, const Vasarlo & rhs);
 
 #endif //PROG2_HF_VASARLO_H

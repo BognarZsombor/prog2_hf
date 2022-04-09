@@ -40,8 +40,13 @@ public:
 
     ListaElem * clone() const;
 
+    int licit(int random) const;
+
     ~VasarloLista();
 };
 
+/// GLobal függvények
+
+std::ostream & operator<<(std::ostream & os, const VasarloLista & rhs);
 
 #endif //PROG2_HF_VASARLOLISTA_H

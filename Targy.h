@@ -18,12 +18,13 @@ public:
 
     const std::string & get_nev() const { return nev; }
 
-    int & get_licit_ertek() { return ar; }
+    int & get_ar() { return ar; }
 
-    const int & get_licit_ertek() const { return ar; }
-
-    std::ostream & kiir(std::ostream & os);
+    const int & get_ar() const { return ar; }
 };
 
+/// GLobal függvények
+
+std::ostream & operator<<(std::ostream & os, const Targy & rhs);
 
 #endif //PROG2_HF_TARGY_H

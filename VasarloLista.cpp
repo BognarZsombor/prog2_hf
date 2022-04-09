@@ -4,6 +4,16 @@
 
 #include "VasarloLista.h"
 
+int VasarloLista::licit(int random) const {
+    ListaElem * iter = eleje;
+    while (iter != NULL) {
+        if (random > iter->adat.get_licit_ertek()) {
+
+        }
+        iter = iter->kov;
+    }
+}
+
 VasarloLista::ListaElem * VasarloLista::clone() const {
     ListaElem * uj_lista = eleje;
     ListaElem * iter = eleje;

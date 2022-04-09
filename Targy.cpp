@@ -5,7 +5,7 @@
 #include <iostream>
 #include "Targy.h"
 
-std::ostream & Targy::kiir(std::ostream &os) {
-    os << nev << "(" << ar << ")";
+std::ostream & operator<<(std::ostream & os, const Targy & rhs) {
+    os << rhs.get_nev() << "(" << rhs.get_ar() << ")";
     return os;
 }
