@@ -10,18 +10,26 @@
 #include "Vasarlo.h"
 #include "VasarloLista.h"
 
+struct Licit {
+    Vasarlo licitalo;
+    int licit;
+
+    Licit() : licit(0) { };
+};
+
 class Arveres {
     std::string szervezo;
     Targy targy;
     VasarloLista vasarlok;
-    int akt_licit;
+    Licit akt_licit;
+
+    Arveres(const Arveres &);
+
+    Arveres& operator=(const Arveres & rhs);
 
 public:
-    Arveres(const Arveres &) = delete;
-
-    Arveres& operator=(const Arveres & rhs) = delete;
-
-    Arveres(const char * _szervezo, Targy & _targy, const VasarloLista & _vasarlok) : szervezo(_szervezo), targy(_targy), vasarlok(_vasarlok.clone()), akt_licit(0) {};
+    Arveres(const char * _szervezo, const Targy & _targy)
+        : szervezo(_szervezo), targy(_targy), vasarlok(NULL) { };
 
     std::string & get_szervezo() { return szervezo; }
 
@@ -31,15 +39,23 @@ public:
 
     const Targy & get_targy() const { return targy; }
 
-    int & get_akt_licit() { return akt_licit; }
+    Licit & get_akt_licit() { return akt_licit; }
 
-    const int & get_akt_licit() const { return akt_licit; }
+    const Licit & get_akt_licit() const { return akt_licit; }
 
-    int uj_licit();
+    VasarloLista & get_vasarlok() { return vasarlok; }
+
+    const VasarloLista & get_vasarlok() const { return vasarlok; }
+
+    void hozzaad(const char * vasarlo_nev);
+
+    void torol(const char * vasarlo_nev);
+
+    bool uj_licit();
 };
 
 /// GLobal függvények
 
-std::ostream & operator<<(std::ostream & os, Arveres rhs);
+std::ostream & operator<<(std::ostream & os, Arveres & rhs);
 
 #endif //PROG2_HF_ARVERES_H

@@ -8,6 +8,8 @@
 #include <iostream>
 #include "Vasarlo.h"
 
+struct Licit;
+
 class VasarloLista {
     struct ListaElem {
         ListaElem * kov;
@@ -16,31 +18,37 @@ class VasarloLista {
 
     ListaElem * eleje;
 
+    VasarloLista(VasarloLista const & rhs_l);
+
+    VasarloLista& operator=(const VasarloLista & rhs);
+
 public:
 
-    VasarloLista(VasarloLista const & rhs_l) = delete;
-
-    VasarloLista& operator=(const VasarloLista & rhs) = delete;
-
     class ElementNotFound : public std::exception {
-        const char * what() const throw() override { return "Ilyen nevű ember nincs a listában."; }
+        const char * what() const noexcept override { return "Ilyen nevű ember nincs a listában."; }
     };
 
     class NameAlreadyExists : public std::exception {
-        const char * what() const throw() override { return "Már van a listában ilyen nevű ember"; }
+        const char * what() const noexcept override { return "Már van a listában ilyen nevű ember"; }
     };
 
     VasarloLista(ListaElem * _eleje = NULL) { eleje = _eleje; }
 
+    void hozzaad(const Vasarlo & vasarlo);
+
+    void hozzaad(const char * vasarlo_nev);
+
+    void torol(const char * vasarlo_nev);
+
     ListaElem * hozzaad(const Vasarlo & vasarlo) const;
 
-    ListaElem * hozzaad(const char * vasarlo_nev) const;
+    ListaElem *  hozzaad(const char * vasarlo_nev) const;
 
-    ListaElem * torol(const char * vasarlo_nev);
+    ListaElem *  torol(const char * vasarlo_nev) const;
 
     ListaElem * clone() const;
 
-    int licit(int random) const;
+    Licit licit() const;
 
     ~VasarloLista();
 };

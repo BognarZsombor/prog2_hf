@@ -6,15 +6,22 @@
 #define PROG2_HF_VASARLO_H
 
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 
 class Vasarlo {
     std::string nev;
     int licit_ertek;
 
 public:
-    Vasarlo() : licit_ertek(0) {};
+    Vasarlo() { };
 
-    explicit Vasarlo(const char * n, int l = 0) : nev(n), licit_ertek(l) {};
+    explicit Vasarlo(const char * n, int l = 0) : nev(n), licit_ertek(l) {
+        if (licit_ertek == 0) {
+            srand(time(NULL));
+            licit_ertek = rand() % 100;
+        }
+    };
 
     std::string & get_nev() { return nev; }
 

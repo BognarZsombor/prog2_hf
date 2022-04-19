@@ -3,25 +3,91 @@
 //
 
 #include "VasarloLista.h"
+#include "Arveres.h"
 
-int VasarloLista::licit(int random) const {
+Licit VasarloLista::licit() const {
+    srand(time(NULL));
+    Licit licit;
+    licit.licit = 0;
     ListaElem * iter = eleje;
+    int random;
     while (iter != NULL) {
-        if (random > iter->adat.get_licit_ertek()) {
-
+        random = rand() % 100;
+        if (random < iter->adat.get_licit_ertek()) {
+            licit.licit += iter->adat.get_licit_ertek() * 1000 + rand() % 1000;
+            licit.licitalo = iter->adat;
         }
         iter = iter->kov;
     }
+    return licit;
 }
 
 VasarloLista::ListaElem * VasarloLista::clone() const {
+    if (eleje == NULL) return NULL;
     ListaElem * uj_lista = eleje;
     ListaElem * iter = eleje;
     while (iter != NULL) {
-        uj_lista = hozzaad(iter->adat);
+        hozzaad(iter->adat);
         iter = iter->kov;
     }
     return uj_lista;
+}
+
+void VasarloLista::hozzaad(const Vasarlo & vasarlo) {
+    ListaElem * uj_eleje = NULL;
+    ListaElem * uj = new ListaElem;
+    uj->adat = vasarlo;
+    uj->kov = NULL;
+
+    if (eleje == NULL) {
+        uj_eleje = uj;
+        eleje = uj_eleje;
+        return;
+    }
+    ListaElem *iter = eleje;
+    while (iter->kov != NULL) {
+        if (iter->adat == vasarlo) throw NameAlreadyExists();
+        iter = iter->kov;
+    }
+    iter->kov = uj;
+}
+
+void VasarloLista::hozzaad(const char * vasarlo_nev) {
+    ListaElem * uj_eleje = NULL;
+    ListaElem * uj = new ListaElem;
+    uj->adat = Vasarlo(vasarlo_nev);
+    uj->kov = NULL;
+
+    if (eleje == NULL) {
+        uj_eleje = uj;
+        eleje = uj_eleje;
+        return;
+    }
+    ListaElem *iter = eleje;
+    while (iter->kov != NULL) {
+        if (iter->adat == vasarlo_nev) throw NameAlreadyExists();
+        iter = iter->kov;
+    }
+    iter->kov = uj;
+}
+
+void VasarloLista::torol(const char * vasarlo_nev) {
+    VasarloLista::ListaElem * iter = eleje;
+    VasarloLista::ListaElem * lemarado = NULL;
+    while (iter != NULL && iter->adat != vasarlo_nev) {
+        lemarado = iter;
+        iter = iter->kov;
+    }
+
+    if (iter == NULL) throw ElementNotFound();
+    if (lemarado == NULL) {
+        ListaElem *ujeleje = iter->kov;
+        delete iter;
+        eleje = ujeleje;
+        return;
+    }
+    lemarado->kov = iter->kov;
+    delete iter;
 }
 
 VasarloLista::ListaElem * VasarloLista::hozzaad(const Vasarlo & vasarlo) const {
@@ -45,7 +111,7 @@ VasarloLista::ListaElem * VasarloLista::hozzaad(const Vasarlo & vasarlo) const {
 
 VasarloLista::ListaElem * VasarloLista::hozzaad(const char * vasarlo_nev) const {
     ListaElem * uj_eleje = NULL;
-    ListaElem *uj = new ListaElem;
+    ListaElem * uj = new ListaElem;
     uj->adat = Vasarlo(vasarlo_nev);
     uj->kov = NULL;
 
@@ -62,7 +128,7 @@ VasarloLista::ListaElem * VasarloLista::hozzaad(const char * vasarlo_nev) const 
     return eleje;
 }
 
-VasarloLista::ListaElem * VasarloLista::torol(const char * vasarlo_nev) {
+VasarloLista::ListaElem * VasarloLista::torol(const char * vasarlo_nev) const {
     VasarloLista::ListaElem * iter = eleje;
     VasarloLista::ListaElem * lemarado = NULL;
     while (iter != NULL && iter->adat != vasarlo_nev) {
@@ -74,8 +140,7 @@ VasarloLista::ListaElem * VasarloLista::torol(const char * vasarlo_nev) {
     if (lemarado == NULL) {
         ListaElem *ujeleje = iter->kov;
         delete iter;
-        eleje = ujeleje;
-        return eleje;
+        return ujeleje;
     }
     lemarado->kov = iter->kov;
     delete iter;
