@@ -2,25 +2,32 @@
 
 ## Objektumok
 
-### Árverés
+### Licit
+
+Ezzel tudnak az objektumok egymás között liciteket átadni, amivel a licitálót és a licit értékét is látjuk.
 
 #### Tulajdonságok
 
-Szervező, Tárgy, VásárlóLista
+Licitáló, licit
 
 #### Public Funkciók
 
-vásárló hozzáadás + : VásárlóLista végére fűz egy új vásárlót. Mivel addig megyünk a licitálásban amig mindenki ki nem szállt fölösleges máshová hozzáadnunk listaelemet. Ha csak stringet adunk meg készit egy új vásárlót. Az id mindig átiródik az aktuális utolsóhoz képest. Megadhatunk egy teljes VásárlóListát is, ezzel egyszerűbb ha több tárgyat akarunk árverezni, csak át kell adnunk az előző árverés VásárlóListáját.
+Konstruktor: létrehoz egy licitet, 0 licit értékkel.
 
-vásárló törlés - : VásárlóListából kitörli az adott elemet név(string) szerint. Az indexek az előző állapotban maradnak.
+### Árverés
 
-vásárló indexelés [] : Ha egy Árverés objektumot indexelünk a VásárlóLista elemeit érjük el. Lehet név(string) vagy id alapján keresni. Hiányzó név vagy id esetén hibát dob vissza. Balértékként is lehet haszálni, a vásárló szerkesztésére.
+Az árverés lebonyolítására szolgáló objektum. Nem lehet másoló konstruktort és egyenlőség opetárort használni.
 
-tárgy hozzáadás : Getter és Setter.
+#### Tulajdonságok
 
-szervező hozzáadás : Getter és Setter.
+Szervező: Az árverés szervezőjének neve.
+Tárgy: Az árverésen elárverezendő tárgy.
+VásárlóLista: Az árveréshez tartozó vásárlók listája.
+Licit: A legnagyobb érvényes licit.
 
-kiir : Elinditja az árverést.
+#### Public Funkciók
+
+Konstruktor: Meg kell adni a szervező nevét, és a tárgyat. Vásárlókat később lehet hozzáadni.
 
 ### Vásárló
 
