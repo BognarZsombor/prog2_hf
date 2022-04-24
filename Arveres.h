@@ -43,10 +43,6 @@ public:
 
     const Licit & get_akt_licit() const { return akt_licit; }
 
-    VasarloLista & get_vasarlok() { return vasarlok; }
-
-    const VasarloLista & get_vasarlok() const { return vasarlok; }
-
     void hozzaad(const char * vasarlo_nev);
 
     void torol(const char * vasarlo_nev);
