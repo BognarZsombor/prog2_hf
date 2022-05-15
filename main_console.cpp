@@ -9,7 +9,7 @@
 
 using namespace std;
 
-int main() {
+int main_console() {
     bool run = true;
     int command = 0;
     Arveres arveres;
