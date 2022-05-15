@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "Targy.h"
+#include "memtrace.h"
 
 std::ostream & operator<<(std::ostream & os, const Targy & rhs) {
     os << rhs.get_nev() << "(" << rhs.get_ar() << ")";

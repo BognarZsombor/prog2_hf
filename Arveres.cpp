@@ -6,6 +6,7 @@
 #include <cstdlib>
 #include <ctime>
 #include "Arveres.h"
+#include "memtrace.h"
 
 bool Arveres::uj_licit() {
     Licit temp_licit = vasarlok.licit();
@@ -20,7 +21,11 @@ void Arveres::hozzaad(const char * vasarlo_nev) {
 }
 
 void Arveres::torol(const char * vasarlo_nev) {
-    vasarlok.torol(vasarlo_nev);
+    try {
+        vasarlok.torol(vasarlo_nev);
+    } catch (VasarloLista::ElementNotFound) {
+        std::cout << "Nincs ilyen nevu ember a listaban." << std::endl;
+    }
 }
 
 std::ostream & operator<<(std::ostream & os, Arveres & rhs) {

@@ -12,7 +12,11 @@ class Targy {
     int ar;
 
 public:
+    Targy() { };
+
     Targy(const char * n, int a = 0) : nev(n), ar(a) {};
+
+    Targy(const std::string & n, int a = 0) : nev(n), ar(a) {};
 
     std::string & get_nev() { return nev; }
 

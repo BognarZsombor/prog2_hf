@@ -4,6 +4,7 @@
 
 #include "VasarloLista.h"
 #include "Arveres.h"
+#include "memtrace.h"
 
 Licit VasarloLista::licit() const {
     srand(time(NULL));
@@ -22,15 +23,13 @@ Licit VasarloLista::licit() const {
     return licit;
 }
 
-VasarloLista::ListaElem * VasarloLista::clone() const {
-    if (eleje == NULL) return NULL;
-    ListaElem * uj_lista = eleje;
+void VasarloLista::clone(VasarloLista & other) const {
+    if (eleje == NULL) return;
     ListaElem * iter = eleje;
     while (iter != NULL) {
-        hozzaad(iter->adat);
+        other.hozzaad(iter->adat);
         iter = iter->kov;
     }
-    return uj_lista;
 }
 
 void VasarloLista::hozzaad(const Vasarlo & vasarlo) {

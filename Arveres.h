@@ -25,10 +25,13 @@ class Arveres {
 
     Arveres(const Arveres &);
 
-    Arveres& operator=(const Arveres & rhs);
-
 public:
+    Arveres() { };
+
     Arveres(const char * _szervezo, const Targy & _targy)
+        : szervezo(_szervezo), targy(_targy), vasarlok(NULL) { };
+
+    Arveres(std::string & _szervezo, const Targy & _targy)
         : szervezo(_szervezo), targy(_targy), vasarlok(NULL) { };
 
     std::string & get_szervezo() { return szervezo; }
@@ -42,6 +45,8 @@ public:
     Licit & get_akt_licit() { return akt_licit; }
 
     const Licit & get_akt_licit() const { return akt_licit; }
+
+    void set_vasarlok(Arveres & other) { other.vasarlok.clone(vasarlok); }
 
     void hozzaad(const char * vasarlo_nev);
 

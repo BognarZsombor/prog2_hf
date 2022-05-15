@@ -1,6 +1,7 @@
 #include <iostream>
 #include "gtest_lite.h"
 #include "Arveres.h"
+#include "memtrace.h"
 
 int main() {
 
@@ -16,8 +17,18 @@ int main() {
             arveres.hozzaad("Fabian Gabor");
             arveres.hozzaad("Zoli");
             arveres.hozzaad("Nagy Tamas");
-            std::cout << arveres;
+            std::cout << arveres << std::endl;
         } END
+
+    TEST(Arveres cloneozas, _clone) {
+        Arveres arveres("Bognar Zsombor", Targy("Ceruza", 100));
+        arveres.hozzaad("Fabian Gabor");
+        arveres.hozzaad("Zoli");
+        arveres.hozzaad("Nagy Tamas");
+        Arveres cloned(arveres.get_szervezo(), arveres.get_targy());
+        cloned.set_vasarlok(arveres);
+        std::cout << cloned << std::endl;
+    } END
 
     return 0;
 }

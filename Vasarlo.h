@@ -23,6 +23,13 @@ public:
         }
     };
 
+    explicit Vasarlo(const std::string & n, int l = 0) : nev(n), licit_ertek(l) {
+        if (licit_ertek == 0) {
+            srand(time(NULL));
+            licit_ertek = rand() % 100;
+        }
+    };
+
     std::string & get_nev() { return nev; }
 
     const std::string & get_nev() const { return nev; }

@@ -20,16 +20,14 @@ class VasarloLista {
 
     VasarloLista(VasarloLista const & rhs_l);
 
-    VasarloLista& operator=(const VasarloLista & rhs);
-
 public:
 
     class ElementNotFound : public std::exception {
-        const char * what() const noexcept override { return "Ilyen nevű ember nincs a listában."; }
+        const char * what() const noexcept override { return "Ilyen nevu ember nincs a listaban."; }
     };
 
     class NameAlreadyExists : public std::exception {
-        const char * what() const noexcept override { return "Már van a listában ilyen nevű ember"; }
+        const char * what() const noexcept override { return "Mar van a listaban ilyen nevu ember"; }
     };
 
     VasarloLista(ListaElem * _eleje = NULL) { eleje = _eleje; }
@@ -42,11 +40,11 @@ public:
 
     ListaElem * hozzaad(const Vasarlo & vasarlo) const;
 
-    ListaElem *  hozzaad(const char * vasarlo_nev) const;
+    ListaElem * hozzaad(const char * vasarlo_nev) const;
 
-    ListaElem *  torol(const char * vasarlo_nev) const;
+    ListaElem * torol(const char * vasarlo_nev) const;
 
-    ListaElem * clone() const;
+    void clone(VasarloLista & other) const;
 
     Licit licit() const;
 
