@@ -23,6 +23,17 @@ Licit VasarloLista::licit() const {
     return licit;
 }
 
+int VasarloLista::count() const {
+    if (eleje == NULL) return 0;
+    ListaElem * iter = eleje;
+    int ossz = 0;
+    while (iter != NULL) {
+        ossz++;
+        iter = iter->kov;
+    }
+    return ossz;
+}
+
 void VasarloLista::clone(VasarloLista & other) const {
     if (eleje == NULL) return;
     ListaElem * iter = eleje;

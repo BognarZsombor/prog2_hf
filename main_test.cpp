@@ -30,5 +30,12 @@ int main() {
         std::cout << cloned << std::endl;
     } END
 
+    TEST(Arveres throws, _throws) {
+        Arveres arveres("Bognar Zsombor", Targy("Alma", 120));
+        EXPECT_THROW(std::cout << arveres, Arveres::NoCustomersAdded);
+        arveres.hozzaad("Zoli");
+        EXPECT_THROW(std::cout << arveres, Arveres::OnlyOneCustomerAdded);
+    } END
+
     return 0;
 }

@@ -26,6 +26,15 @@ class Arveres {
     Arveres(const Arveres &);
 
 public:
+
+    class NoCustomersAdded : public std::exception {
+        const char * what() const noexcept override { return "Nincsenek vasarlok hozzaadva."; }
+    };
+
+    class OnlyOneCustomerAdded : public std::exception {
+        const char * what() const noexcept override { return "Csak egy licitáló van hozzáadva."; }
+    };
+
     Arveres() { };
 
     Arveres(const char * _szervezo, const Targy & _targy)
@@ -53,6 +62,10 @@ public:
     void torol(const char * vasarlo_nev);
 
     bool uj_licit();
+
+    bool nincs_vasarlo() const { return vasarlok.empty(); }
+
+    int vasarlok_szama() const { return vasarlok.count(); }
 };
 
 /// GLobal függvények

@@ -44,6 +44,10 @@ public:
 
     ListaElem * torol(const char * vasarlo_nev) const;
 
+    bool empty() const { return eleje == NULL; }
+
+    int count() const;
+
     void clone(VasarloLista & other) const;
 
     Licit licit() const;

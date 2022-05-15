@@ -29,6 +29,9 @@ void Arveres::torol(const char * vasarlo_nev) {
 }
 
 std::ostream & operator<<(std::ostream & os, Arveres & rhs) {
+    if (rhs.nincs_vasarlo()) throw Arveres::NoCustomersAdded();
+    if (rhs.vasarlok_szama() == 1) throw Arveres::OnlyOneCustomerAdded();
+
     int cnt = 0;
     rhs.uj_licit();
     while (rhs.uj_licit()) {
